@@ -1,0 +1,17 @@
+Installation From Source Checkout:
+
+mkdir m4
+autoreconf -is
+./configure
+make
+make check
+make install
+
+Installation From Release Tarball:
+
+tar -xzf eglob.tar.gz
+cd eglob
+./configure
+make
+make check
+make install

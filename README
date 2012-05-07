@@ -1,0 +1,28 @@
+EGLOB - Extended Globbing
+
+An extension of the POSIX glob(...) function to support the star-star operator: '**'. The star-star operator will expand into any number of directory segments '/*' in order to acheive a match. For example:
+
+/usr/**/*.so.*
+
+Is equivalent to:
+
+/usr/lib*/*.so.*
+/usr/lib*/*/*.so.*
+/usr/lib*/*/*/*.so.*
+...
+
+Another example would be to find all the jpeg files under your home directory:
+
+~/**/*.jpeg
+
+This use is mainly a shorthand for using the find utility and has a similar effect to:
+
+$ find ~ -name \*.jpeg
+
+It greatly simplifies searches involving a trailing directory structure:
+
+/usr/**/bin/*
+
+Which will find all the files under a bin directory regardless of whether they are in /usr/bin, /usr/lib/bin, /usr/lib*/bin, /usr/lib/app/lib/bin, etc. The equivalent find command requires matching with a regex on the path itself.
+
+The star-star operator is inspired by the paper FCGlob: A New SELinux File Context Syntax by Don Miner and James Athey: http://www.tresys.com/pdf/FCGlob-A-New-Syntax.pdf
